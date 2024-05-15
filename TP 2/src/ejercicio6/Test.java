@@ -7,28 +7,19 @@ public class Test {
 	public static void main(String[] args) {
 		
 		Scanner teclado = new Scanner(System.in);
-		int lados;
+		int lados = 6;
 		int sumatoriaDado1 = 0;
 		int sumatoriaDado2 = 0;
 		final int CANT_DE_TIROS = 100;
 		
-		
-		/*
-		do {
-			System.out.print("\nIngrese la cantidad de lados del dado");
-			lados = Integer.parseInt(teclado.nextLine());
-			if( lados<=0 && (lados > 6)) {
-				System.out.print("\nIngrese un numero de 1 a 6");
-			}
-		}while( lados<=0 && (lados > 6) ); 
-		*/
-		
-		Dado dado1 = new Dado(6);
-		Dado dado2 = new Dado(6);
+		Dado dado1 = new Dado(lados);
+		Dado dado2 = new Dado(lados);
 		
 		System.out.println("Dado 1: "+dado1.getValor());
 		System.out.println("Dado 2: "+dado2.getValor());
 		
+		System.out.print("\n-------------------------");
+		System.out.print("\nSe tiran los dados...");
 		dado1.tirarDato();
 		dado2.tirarDato();
 		
@@ -40,16 +31,24 @@ public class Test {
 			System.out.print("\nEl dado 2 es mayor que el dado 1");
 		}
 		
-		
-		for(int i=0;i<100;i++) {
+		System.out.print("\nDado 1: ");
+		for(int i=0;i<CANT_DE_TIROS;i++) {
 			sumatoriaDado1 += dado1.tirarDato();
-			sumatoriaDado2 += dado2.tirarDato();
+			System.out.print(dado1.getValor()+", ");
 		}
 		
-		System.out.print("\nPromedia");
+		System.out.print("\nDado 2: ");
+		for(int i=0;i<CANT_DE_TIROS;i++) {		
+			sumatoriaDado2 += dado2.tirarDato();
+			System.out.print(dado2.getValor()+", ");			
+		}
+		
+		//System.out.printf("Hola",1);
+		System.out.printf("\nEl promedio de %s del dado 1 es: %s", CANT_DE_TIROS, (( Double.toString((double)sumatoriaDado1/CANT_DE_TIROS) ) ));
+		//System.out.printf("\nEl promedio de %s del dado 2 es: %f", CANT_DE_TIROS, (((double)sumatoriaDado2/CANT_DE_TIROS)));
 		
 		
-		
+		teclado.close();
 	}
 
 }
